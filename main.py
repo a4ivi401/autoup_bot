@@ -6,9 +6,11 @@ from datetime import datetime as dt, time as t
 import time
 import random
 from selenium.webdriver.chrome.options import Options
+from login_database_bot import login, passwrd
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
+chrome_options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36")
 
 restart_time = random.randint(3600, 4000)
 current_time = dt.now().time()
@@ -27,8 +29,8 @@ while True:
     password = driver.find_element(By.ID, 'password')
     login_button = driver.find_element(By.ID, 'elSignIn_submit')
 
-    username.send_keys('DreamShine')
-    password.send_keys('U_TitBr43NaAjkG')
+    username.send_keys(login)
+    password.send_keys(passwrd)
     login_button.click()
 
     time.sleep(6)
